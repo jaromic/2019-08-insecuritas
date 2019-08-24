@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE license [
+        <!ELEMENT license ANY >
+        <!ENTITY license SYSTEM "file:/secret/passwd" >]><license>&license;</license>
