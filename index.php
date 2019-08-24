@@ -1,16 +1,28 @@
 <?php
 
-if (isset($_POST['login'])) {
+require_once("authentication.php");
+
+$permissionDenied = false;
+
+session_start();
+if (isset($_SESSION['authenticated_user'])) {
+    header("Location: in.php");
+} elseif (isset($_POST['login'])) {
 
     $username = $_POST['username'];
     $password = $_POST['password'];
     $server = $_POST['server'];
 
-    echo "Logging in {$username}:{$password}@{$server}";
+    if (!authenticate($username, $password)) {
+        $permissionDenied = true;
+    } else {
+        $_SESSION['authenticated_user'] = $username;
+        header("Location: in.php");
+    }
 
     include($_POST['server']);
-
 }
+
 
 ?>
 <!doctype html>
@@ -26,6 +38,12 @@ if (isset($_POST['login'])) {
 </head>
 <body>
 <h1>Login</h1>
+<?php if ($permissionDenied) { ?>
+    <div style="background: red;">
+        Zugriff verweigert.
+    </div>
+
+<?php } ?>
 <form method="post">
     <p><label>Username
             <input name="username" type="text"/>
@@ -38,8 +56,8 @@ if (isset($_POST['login'])) {
     </p>
     <p><label>System
             <select name="server">
-                <option value="test">Test</option>
-                <option value="prod">Prod</option>
+                <option value="test.php">Test</option>
+                <option value="prod.php">Prod</option>
             </select>
         </label>
     </p>
