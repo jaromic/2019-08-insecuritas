@@ -43,6 +43,7 @@ if (isset($_SESSION['authenticated_user'])) {
     </div>
 
 <?php } ?>
+<!-- TODO secure 'secret/passwd' -->
 <form method="post">
     <p><label>Username
             <input id="username" name="username" type="text" onchange="onInputChanged()" onkeyup="onInputChanged()"/>
