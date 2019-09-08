@@ -26,15 +26,14 @@ if (isset($_SESSION['authenticated_user'])) {
 
 ?>
 <!doctype html>
-<html>
+<html lang="en">
 <head><title>Insecuritas Login</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
           integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/input.css">
+    <script src="js/input.js"></script>
 </head>
 <body>
 <h1>Login</h1>
@@ -46,12 +45,12 @@ if (isset($_SESSION['authenticated_user'])) {
 <?php } ?>
 <form method="post">
     <p><label>Username
-            <input name="username" type="text"/>
+            <input id="username" name="username" type="text" onchange="onInputChanged()" onkeyup="onInputChanged()"/>
         </label>
     </p>
     <p>
         <label>Password
-            <input name="password" type="password"/>
+            <input id="password" name="password" type="password" onchange="onInputChanged()" onkeyup="onInputChanged()"/>
         </label>
     </p>
     <p><label>System
@@ -62,7 +61,7 @@ if (isset($_SESSION['authenticated_user'])) {
         </label>
     </p>
     <p>
-        <button name="login" type="submit">Anmelden</button>
+        <button id="login" name="login" type="submit" disabled="disabled">Anmelden</button>
     </p>
 </form>
 </body>
