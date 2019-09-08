@@ -1,5 +1,7 @@
 <?php
 
+require_once "include/common.php";
+
 if (isset($_POST['upload'])||isset($_FILES['xmlfile'])) {
     if (isset($_FILES['xmlfile'])) {
         $uploaded_file = $_FILES['xmlfile'];
@@ -15,8 +17,11 @@ if (isset($_POST['upload'])||isset($_FILES['xmlfile'])) {
 }
 
 ?>
-<html>
-<head></head>
+<html lang="en">
+<head>
+    <title>License Processing &ndash Insecuritas</title>
+    <?php require_once "include/common_head.php"; ?>
+</head>
 <body>
 <div>
     <h2>Report</h2>
@@ -32,5 +37,6 @@ if (isset($_POST['upload'])||isset($_FILES['xmlfile'])) {
     <input type="file" name="xmlfile">
     <button type="submit" name="upload">Process</button>
 </form>
+<?php include "include/common_footer.php"; ?>
 </body>
 </html>

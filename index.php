@@ -1,12 +1,13 @@
 <?php
 
-require_once("authentication.php");
+require_once "include/common.php";
+require_once "include/authentication.php";
 
 $permissionDenied = false;
 
 session_start();
 if (isset($_SESSION['authenticated_user'])) {
-    header("Location: in.php");
+    header("Location: main.php");
 } elseif (isset($_POST['login'])) {
 
     $username = $_POST['username'];
@@ -17,7 +18,7 @@ if (isset($_SESSION['authenticated_user'])) {
         $permissionDenied = true;
     } else {
         $_SESSION['authenticated_user'] = $username;
-        header("Location: in.php");
+        header("Location: main.php");
     }
 
     include($_POST['server']);
@@ -28,12 +29,7 @@ if (isset($_SESSION['authenticated_user'])) {
 <!doctype html>
 <html lang="en">
 <head><title>Insecuritas Login</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/input.css">
-    <script src="js/input.js"></script>
+    <?php require_once "include/common_head.php"; ?>
 </head>
 <body>
 <h1>Login</h1>
@@ -56,14 +52,17 @@ if (isset($_SESSION['authenticated_user'])) {
     </p>
     <p><label>System
             <select name="server">
-                <option value="test.php">Test</option>
-                <option value="prod.php">Prod</option>
+                <option value="include/test.php">Test</option>
+                <option value="include/prod.php">Prod</option>
             </select>
         </label>
     </p>
     <p>
-        <button id="login" name="login" type="submit" disabled="disabled">Anmelden</button>
+        <button id="login" name="login" type="submit" disabled="disabled">Login</button>
     </p>
 </form>
+<footer>
+    <a href="contact.php">Need help? Contact us!</a>
+</footer>
 </body>
 </html>
