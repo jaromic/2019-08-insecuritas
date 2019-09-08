@@ -11,7 +11,7 @@ if (isset($_POST['upload'])||isset($_FILES['xmlfile'])) {
         $msg = "No files transferred.";
     }
 } else {
-    $msg = "Neither set.";
+    $msg = "No files uploaded yet.";
 }
 
 ?>
@@ -30,7 +30,7 @@ if (isset($_POST['upload'])||isset($_FILES['xmlfile'])) {
 <hr><br>
 <form method="post" enctype="multipart/form-data">
     <input type="file" name="xmlfile">
-    <button type="submit" name="upload">Verarbeiten</button>
+    <button type="submit" name="upload">Process</button>
 </form>
 </body>
 </html>

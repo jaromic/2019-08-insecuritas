@@ -13,9 +13,14 @@ if(isset($_POST['logout'])) {
         <li><a href="">Bla</a></li>
         <li><a href="">Blu</a></li>
     </ul>
+    <h2>License check</h2>
+    <a href="xml.php">Upload license data</a>
+    <br>
+    <br>
     <form method="post">
         <button type="submit" name="logout">Abmelden</button>
     </form>
+
 <?php
 } else {
     ?>
